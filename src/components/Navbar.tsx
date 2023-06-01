@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CiSearch } from 'react-icons/ci'
 import { AiOutlineUser } from 'react-icons/ai'
 import { BsCart3 } from 'react-icons/bs'
@@ -12,11 +12,13 @@ function Navbar() {
     const [scrollValue, setScrollValue] = useState(0)
     const [isNavOpen, setNavIsOpen] = useState(false)
     const [text, setText] = useState("")
-    console.log(text)
-    window.addEventListener('scroll', () => {
-        setScrollValue(window.pageYOffset)
-    })
-
+    
+    useEffect(()=>{
+        window.addEventListener('scroll', () => {
+            setScrollValue(window.pageYOffset)
+        })
+    }, [scrollValue])
+    
     return (
         <header className='w-full flex flex-col'>
             {/* navbar top */}
