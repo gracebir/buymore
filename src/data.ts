@@ -1,3 +1,6 @@
+import { BsPhone } from 'react-icons/bs'
+import { LuShirt, LuTruck } from 'react-icons/lu'
+
 export const navLinks = [
     {
         link: "Home",
@@ -12,7 +15,26 @@ export const navLinks = [
         href: "/contact"
     },
     {
+        link: "Shopping Card",
+        href: "/cart"
+    },
+    {
         link: "Terms",
         href: "/term"
+    }
+]
+
+export const categories = [
+    {
+        text: "Fashion",
+        Icon: LuShirt
+    },
+    {
+        text: "Electronic",
+        Icon: BsPhone
+    },
+    {
+        text: "Furniture",
+        Icon: LuTruck
     }
 ]

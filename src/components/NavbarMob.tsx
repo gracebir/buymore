@@ -6,7 +6,7 @@ import { CiSearch} from 'react-icons/ci'
 function NavbarMob() {
     return (
         <div className="fixed block lg:hidden top-20 inset-0 backdrop-blur-sm right-0 left-0 w-full h-[92vh]">
-            <div className='h-[35vh] bg-dark-color py-4 flex flex-col gap-4'>
+            <div className='h-[38vh] bg-dark-color py-4 flex flex-col gap-4'>
                 <div className='flex flex-col gap-6 px-4'>
                     {navLinks.map((navlink, i) => (
                         <Link className="font-semibold duration-300 text-sm hover:text-blue-color" key={i} href={navlink.href}>{navlink.link}</Link>
