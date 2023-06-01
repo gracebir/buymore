@@ -11,7 +11,8 @@ module.exports = {
         'very-dark':'var(--color-very-dark)',
         'white-color': 'var(--color-white)',
         "blue-color":"var(--color-blue)",
-        "gray-color":"var(--color-dark)"
+        "dark-color":"var(--color-dark)",
+        "gray-color":"var(--color-gray)"
       }
     },
   },
