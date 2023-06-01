@@ -1,7 +1,11 @@
+import Layout from "@/components/Layout";
+
 export default function Home() {
   return (
-    <div>
-      <h1 className="font-semibold text-2xl">hello me</h1>
+    <div className="border border-gray-color py-4">
+      <Layout>
+        <h1 className="text-base">E-commerce</h1>
+      </Layout>
     </div>
   )
 }
