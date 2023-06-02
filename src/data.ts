@@ -38,3 +38,9 @@ export const categories = [
         Icon: LuTruck
     }
 ]
+
+export const images = [
+    'https://res.cloudinary.com/dnzidlufh/image/upload/v1685714656/image1_t7hnft.jpg',
+    'https://res.cloudinary.com/dnzidlufh/image/upload/v1685714660/image2_ftc8gz.jpg',  
+    'https://res.cloudinary.com/dnzidlufh/image/upload/v1685714660/image3_bf27xv.jpg'
+]
