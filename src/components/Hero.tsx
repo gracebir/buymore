@@ -1,7 +1,5 @@
 import { categories } from '@/data'
-import Image from 'next/image'
 import React from 'react'
-import banner from '../assets/image4.jpg'
 import { BsChevronRight } from 'react-icons/bs'
 
 function Hero() {
@@ -24,13 +22,9 @@ function Hero() {
                 </div>
             </div>
             <div className="flex-1 relative rounded-md h-[50vh] w-full overflow-hidden">
-                <Image
-                    src={banner}
-                    alt='banner'
-                    width={500}
-                    height={500}
-                    className={`absolute object-cover w-full rounded-md h-full`}
-                />
+                <div className="bg-banner bg-cover w-full rounded-md h-full">
+                    <div className='bg-black bg-opacity-30 w-full h-full'></div>
+                </div>
             </div>
         </section>
     )

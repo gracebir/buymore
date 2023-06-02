@@ -13,6 +13,9 @@ module.exports = {
         "blue-color":"var(--color-blue)",
         "dark-color":"var(--color-dark)",
         "gray-color":"var(--color-gray)"
+      },
+      backgroundImage:{
+        "banner":"url('../assets/image4.jpg')"
       }
     },
   },
