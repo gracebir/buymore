@@ -1,4 +1,5 @@
 import { categories } from '@/data'
+import { dropdownProps } from '@/type'
 import React, { useState } from 'react'
 import { BsChevronDown, BsChevronUp, BsChevronRight } from 'react-icons/bs'
 import { LuLayoutGrid } from 'react-icons/lu'
