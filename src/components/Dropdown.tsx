@@ -3,10 +3,6 @@ import React, { useState } from 'react'
 import { BsChevronDown, BsChevronUp, BsChevronRight } from 'react-icons/bs'
 import { LuLayoutGrid } from 'react-icons/lu'
 
-type dropdownProps = {
-    text: string
-    setText: React.Dispatch<React.SetStateAction<string>>
-}
 
 function Dropdown({ setText, text }: dropdownProps) {
     const [open, setOpen] = useState(false)
