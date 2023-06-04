@@ -11,3 +11,7 @@ export type productProps = {
     description?: string
     image: string
 }
+
+export type productsProp = {
+    products: Array<productProps>
+}
