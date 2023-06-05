@@ -4,7 +4,7 @@ type dropdownProps = {
 }
 
 export type productProps = {
-    id: number
+    id?: number
     title: string
     price: number
     category: string
