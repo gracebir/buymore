@@ -7,18 +7,20 @@ import { BiMenuAltLeft } from 'react-icons/bi'
 import { navLinks } from '@/data'
 import Dropdown from './Dropdown'
 import NavbarMob from './NavbarMob'
+import CartModal from './CartModal'
 
 function Navbar() {
     const [scrollValue, setScrollValue] = useState(0)
     const [isNavOpen, setNavIsOpen] = useState(false)
     const [text, setText] = useState("")
-    
-    useEffect(()=>{
+    const [isCartOpen, setIsCartOpen] = useState(false)
+
+    useEffect(() => {
         window.addEventListener('scroll', () => {
             setScrollValue(window.pageYOffset)
         })
     }, [scrollValue])
-    
+
     return (
         <header className='w-full flex flex-col'>
             {/* navbar top */}
@@ -49,7 +51,7 @@ function Navbar() {
                                 <span>My Account</span>
                             </div>
                         </Link>
-                        <div className="hidden lg:flex items-center gap-3 cursor-pointer">
+                        <div onClick={() => setIsCartOpen(!isCartOpen)} className="hidden lg:flex items-center gap-3 cursor-pointer">
                             <div className="relative">
                                 <span className="absolute top-0 right-0 text-[12px] text-center rounded-full bg-red-900 h-[1.10rem] w-[1.20rem]">{0}</span>
                                 <BsCart3 size={35} className="text-blue-color" />
@@ -76,6 +78,7 @@ function Navbar() {
                 </div>
             </div>
             {isNavOpen && (<NavbarMob />)}
+            {isCartOpen && (<CartModal setIsCartOpen={setIsCartOpen} />)}
         </header>
     )
 }
