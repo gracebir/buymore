@@ -1,11 +1,12 @@
 import { productProps } from '@/type'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import { BsCart3 } from 'react-icons/bs'
 
-function Product({ title, category, price, image }: productProps) {
+function Product({id, title, category, price, image }: productProps) {
     return (
-        <div className="w-[310px] md:w-[350px] rounded-[20px] flex flex-col gap-4 shadow-lg bg-dark-color p-4">
+        <Link href={`/product/${id}`} className="w-[310px] md:w-[350px] rounded-[20px] flex flex-col gap-4 shadow-lg bg-dark-color p-4">
             <div className='w-[140px] md:w-[150px] mx-auto md:h-[200px] h-[190px] py-2'>
                 <Image className='w-full h-full object-fit' width={200} height={300} src={image} alt={title}/>
             </div>
@@ -23,7 +24,7 @@ function Product({ title, category, price, image }: productProps) {
                     </span>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 
