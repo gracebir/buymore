@@ -1,4 +1,4 @@
-import { productProps, productsProp } from '@/type'
+import { productsProp } from '@/type'
 import React, { useEffect, useState } from 'react'
 import Product from './Product'
 import LoadingProduct from './LoadingProduct'

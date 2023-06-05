@@ -5,7 +5,6 @@ import { productProps } from "@/type";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
 export default function Home({products}:InferGetServerSidePropsType<typeof getServerSideProps>) {
-  console.log(products)
   return (
     <div>
       <Layout>
