@@ -2,6 +2,8 @@ import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { Quicksand } from 'next/font/google'
 import Head from 'next/head'
+import 'react-loading-skeleton/dist/skeleton.css'
+import { SkeletonTheme } from 'react-loading-skeleton'
 
 const quicksand = Quicksand({ 
   subsets: ['latin'],
@@ -14,7 +16,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>buymore</title>
       </Head>
-      <Component {...pageProps} />
+      <SkeletonTheme baseColor="#141c2f" highlightColor="#1f2a48">
+        <Component {...pageProps} />
+      </SkeletonTheme>
     </div>
   )
 }
