@@ -15,3 +15,10 @@ export type productProps = {
 export type productsProp = {
     products: Array<productProps>
 }
+
+export type inputType = {
+    label: string
+    placeholder: string
+    typeInput: string
+    onChange?: (e:React.ChangeEvent<HTMLInputElement>) => void
+}
