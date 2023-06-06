@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import TextField from './TextField'
 import Link from 'next/link'
-import DropdownInput from './DropdownInput'
+import ComboBoxInput from './ComboBoxInput'
+import { functUser } from '@/data'
 
 function SignupForm() {
     const [funct, setFunct] = useState("")
@@ -43,10 +44,13 @@ function SignupForm() {
                     label='Phone Number'
                     typeInput='text'
                     placeholder='Phone Number' />
-                <div className='flex flex-col gap-2'>
-                    <label>Function (Buyer or Seller)</label>
-                    <DropdownInput text={funct} setText={setFunct}/>
-                </div>
+                <ComboBoxInput
+                    data={functUser}
+                    label='Function (Buyer or Seller)'
+                    placeholder='Are you Buyer/Seller'
+                    text={funct}
+                    setText={setFunct}
+                />
                 <button type='submit' className='bg-blue-color lg:col-span-2 sm:col-span-1 py-2 rounded-md'>
                     Sign Up
                 </button>
