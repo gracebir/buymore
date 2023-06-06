@@ -44,7 +44,7 @@ function Navbar() {
                     </div>
 
                     <div className="flex gap-10">
-                        <Link className="hidden lg:flex items-center gap-3" href="/login">
+                        <Link className="hidden lg:flex items-center gap-3" href="/signin">
                             <AiOutlineUser size={22} className='text-blue-color' />
                             <div className="flex flex-col">
                                 <span className='text-gray-color text-sm'>Hello, Sign in</span>
