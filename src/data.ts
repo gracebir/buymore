@@ -39,6 +39,10 @@ export const categories = [
     }
 ]
 
+export const categs = ["fashion", "electronic", "furniture"]
+
+export const functUser = ["buyer", "seller"]
+
 export const images = [
     'https://res.cloudinary.com/dnzidlufh/image/upload/v1685714656/image1_t7hnft.jpg',
     'https://res.cloudinary.com/dnzidlufh/image/upload/v1685714660/image2_ftc8gz.jpg',  
