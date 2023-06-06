@@ -21,4 +21,5 @@ export type inputType = {
     placeholder: string
     typeInput: string
     onChange?: (e:React.ChangeEvent<HTMLInputElement>) => void
+    className?: string
 }
