@@ -22,7 +22,7 @@ function SignInForm() {
          typeInput='password'
          placeholder='Enter Your Password'/>
          <div className='flex justify-end'>
-            <Link className='hover:text-blue-color text-gray-300' href={"/forget"}>Forgot password</Link>
+            <Link className='hover:text-blue-color text-gray-300' href={"/forget-password"}>Forgot password</Link>
          </div>
          <button type='submit' className='bg-blue-color py-2 rounded-md'>
             Sign In
