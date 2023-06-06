@@ -16,7 +16,7 @@ function Contact() {
           <span className="font-medium">Let us know how we can help you.Or Any suggestion?</span>
         </div>
         <div className='border border-dark-color grid gap-8 lg:grid-cols-3 sm:grid-cols-1 rounded-md p-4 min-h-[53vh]'>
-          <div className='bg-blue-color text-dark-color rounded-md h-full col-span-1 p-5 flex flex-col gap-6 lg:justify-between'>
+          <div className='bg-blue-color text-white-color rounded-md h-full col-span-1 p-5 flex flex-col gap-6 lg:justify-between'>
             <div className='flex flex-col gap-1'>
               <h3 className='text-xl font-bold'>Contact informations</h3>
               <span className='font-semibold'>Let us know if have any suggestion</span>
