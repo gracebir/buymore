@@ -1,6 +1,15 @@
-type dropdownProps = {
+export type dropdownProps = {
     text: string
     setText: React.Dispatch<React.SetStateAction<string>>
+    banner?: string
+}
+
+export type dropdownInputProps = {
+    text: string
+    setText: React.Dispatch<React.SetStateAction<string>>
+    data: Array<string>
+    placeholder: string
+    label: string
 }
 
 export type productProps = {
@@ -14,4 +23,12 @@ export type productProps = {
 
 export type productsProp = {
     products: Array<productProps>
+}
+
+export type inputType = {
+    label: string
+    placeholder: string
+    typeInput: string
+    onChange?: (e:React.ChangeEvent<HTMLInputElement>) => void
+    className?: string
 }
