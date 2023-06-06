@@ -3,8 +3,11 @@ import TextField from './TextField'
 import Link from 'next/link'
 
 function SignInForm() {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+    }
   return (
-    <form className='col-span-1 flex flex-col gap-9'>
+    <form onSubmit={handleSubmit} className='col-span-1 flex flex-col gap-9'>
       <div className='text-center flex flex-col gap-4'>
         <h1 className='text-xl font-bold'>Welcome Back</h1>
         <span>Enter your credentials to access your account</span>
@@ -21,7 +24,7 @@ function SignInForm() {
          <div className='flex justify-end'>
             <Link className='hover:text-blue-color text-gray-300' href={"/forget"}>Forgot password</Link>
          </div>
-         <button className='bg-blue-color py-2 rounded-md'>
+         <button type='submit' className='bg-blue-color py-2 rounded-md'>
             Sign In
         </button>
         <div className='flex justify-center'>
