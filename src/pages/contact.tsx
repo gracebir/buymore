@@ -23,15 +23,15 @@ function Contact() {
             </div>
             <div className='flex flex-col gap-3'>
               <div className='flex flex-row gap-3'>
-                <BsWhatsapp size={20}/>
+                <BsWhatsapp size={20} />
                 <span className='font-semibold'>+000 000 000 000</span>
               </div>
               <div className='flex flex-row gap-3'>
-                <AiOutlineMail size={20}/>
+                <AiOutlineMail size={20} />
                 <span className='font-semibold'>example@gmail.com</span>
               </div>
               <div className='flex flex-row gap-3'>
-                <FaMapMarkerAlt size={20}/>
+                <FaMapMarkerAlt size={20} />
                 <span className='font-semibold'>New York, USA</span>
               </div>
             </div>
