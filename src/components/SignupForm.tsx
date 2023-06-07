@@ -17,13 +17,9 @@ function SignupForm() {
             </div>
             <div className='grid lg:grid-cols-2 sm:grid-cols-1 gap-4'>
                 <TextField
-                    label='First Name'
+                    label='Name'
                     typeInput='text'
-                    placeholder='First Name' />
-                <TextField
-                    label='Last Name'
-                    typeInput='text'
-                    placeholder='Last Name' />
+                    placeholder='Enter Your Name' />
                 <TextField
                     label='E-mail Address'
                     typeInput='email'
@@ -37,13 +33,9 @@ function SignupForm() {
                     typeInput='password'
                     placeholder='Confirm Your Password' />
                 <TextField
-                    label='Physical Address'
-                    typeInput='text'
-                    placeholder='Address' />
-                <TextField
                     label='Phone Number'
                     typeInput='text'
-                    placeholder='Phone Number' />
+                    placeholder='+xxx xxx xxx xxx' />
                 <ComboBoxInput
                     data={functUser}
                     label='Function (Buyer or Seller)'
