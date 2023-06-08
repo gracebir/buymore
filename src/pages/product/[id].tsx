@@ -24,8 +24,6 @@ function ProductDetails() {
   useEffect(() => {
     const fetchProduct = async () => {
       if (id) {
-        // const response = await fetch(`https://fakestoreapi.com/products/${router.query.id}`)
-        // const data: productProps = await response.json()
         const response = databases.getDocument(
           process.env.NEXT_PUBLIC_DATABASE as string,
           process.env.NEXT_PUBLIC_PRODUCT_COLLECTION as string,
