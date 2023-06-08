@@ -1,25 +1,42 @@
-import React, { useState } from 'react'
+import React from 'react'
 import TextField from './TextField'
 import Link from 'next/link'
-import ComboBoxInput from './ComboBoxInput'
-import { functUser } from '@/data'
+import { account } from '@/appwrite'
+import { ToastContainer, toast } from 'react-toastify'
 import { useFormik } from 'formik'
 import { signUpSchema } from '@/utils/validations'
+import { v4 as uuid } from 'uuid';
 
 function SignupForm() {
-    const [funct, setFunct] = useState("")
-    
+    // const [funct, setFunct] = useState("")
     const { values, errors, handleChange, handleSubmit } = useFormik({
         initialValues: {
             name: '',
             email: '',
-            phone: '',
             password: '',
             confirmPassword: '',
-            
+
         },
-        onSubmit: () => {
-            console.log(values)
+        onSubmit: (values, actions) => {
+            const response = account.create(uuid(), values.email, values.password, values.name)
+            response.then(
+                (res) => {
+                    toast("Account create succeFully!!", {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    })
+                    console.log(res)
+                },
+                (err) => {
+                    console.log(err)
+                })
+            actions.resetForm()
         },
         validationSchema: signUpSchema
     })
@@ -63,21 +80,6 @@ function SignupForm() {
                     onChange={handleChange}
                     errorMsg={errors.confirmPassword}
                     placeholder='Confirm Your Password' />
-                <TextField
-                    label='Phone Number'
-                    typeInput='text'
-                    id='phone'
-                    value={values.phone}
-                    onChange={handleChange}
-                    errorMsg={errors.phone}
-                    placeholder='+xxx xxx xxx xxx' />
-                <ComboBoxInput
-                    data={functUser}
-                    label='Function (Buyer or Seller)'
-                    placeholder='Are you Buyer/Seller'
-                    text={funct}
-                    setText={setFunct}
-                />
                 <button type='submit' className='bg-blue-color lg:col-span-2 sm:col-span-1 py-2 rounded-md'>
                     Sign Up
                 </button>
@@ -85,6 +87,18 @@ function SignupForm() {
                     <p>Do you have an account ? <Link className='text-blue-400 font-bold hover:text-blue-color' href={"/signin"}>Sign In</Link></p>
                 </div>
             </div>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
         </form>
     )
 }
