@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { CiSearch } from 'react-icons/ci'
 import { AiOutlineUser } from 'react-icons/ai'
 import { BsCart3 } from 'react-icons/bs'
@@ -8,12 +8,29 @@ import { navLinks } from '@/data'
 import Dropdown from './Dropdown'
 import NavbarMob from './NavbarMob'
 import CartModal from './CartModal'
+import { AppContext } from '@/context/productContext'
+import { account } from '@/appwrite'
 
 function Navbar() {
     const [scrollValue, setScrollValue] = useState(0)
     const [isNavOpen, setNavIsOpen] = useState(false)
     const [text, setText] = useState("")
     const [isCartOpen, setIsCartOpen] = useState(false)
+    const { user, setUser } = useContext(AppContext)
+
+    const logout = () => {
+        const response = account.deleteSessions()
+        response.then(
+            (res)=>{
+               setUser({
+                current: false
+               })
+            },
+            (error)=> {
+                console.log(error)
+            }
+            )
+    }
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
@@ -44,13 +61,23 @@ function Navbar() {
                     </div>
 
                     <div className="flex gap-10">
-                        <Link className="hidden lg:flex items-center gap-3" href="/signin">
-                            <AiOutlineUser size={22} className='text-blue-color' />
-                            <div className="flex flex-col">
-                                <span className='text-gray-color text-sm'>Hello, Sign in</span>
-                                <span>My Account</span>
+                        {user?.current ? (
+                            <div onClick={logout} className="hidden lg:flex items-center cursor-pointer gap-3">
+                                <AiOutlineUser size={22} className='text-blue-color' />
+                                <div className="flex flex-col">
+                                    <span className='text-gray-color text-sm'>Hello, {user.providerUid && user.providerUid} </span>
+                                    <span>Logout</span>
+                                </div>
                             </div>
-                        </Link>
+                        ) : (
+                            <Link className="hidden lg:flex items-center gap-3" href={"/signin"}>
+                                <AiOutlineUser size={22} className='text-blue-color' />
+                                <div className="flex flex-col">
+                                    <span className='text-gray-color text-sm'>Hello, Sign in</span>
+                                    <span>My Account</span>
+                                </div>
+                            </Link>
+                        )}
                         <div onClick={() => setIsCartOpen(!isCartOpen)} className="hidden lg:flex items-center gap-3 cursor-pointer">
                             <div className="relative">
                                 <span className="absolute top-0 right-0 text-[12px] text-center rounded-full bg-red-900 h-[1.10rem] w-[1.20rem]">{0}</span>
