@@ -16,10 +16,12 @@ function ResetPassword() {
                     </div>
                     <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
                         <TextField
+                            id='password'
                             label='New Password'
                             typeInput='password'
                             placeholder='Enter Your New Password' />
                         <TextField
+                            id='confirmPassword'
                             label='Confirm Password'
                             typeInput='password'
                             placeholder='Confirm Your Password' />
