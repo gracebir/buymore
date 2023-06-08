@@ -1,18 +1,18 @@
-import { productsDocumentProps } from '@/type'
 import React, { useEffect, useState } from 'react'
 import Product from './Product'
 import LoadingProduct from './LoadingProduct'
+import { Models } from 'appwrite'
 const categories = ["All", "Fashion", "Furniture", "Electronic", "Gaming"]
 
-function ProductSection({ products }: productsDocumentProps) {
+function ProductSection({products}: {products: Models.Document[]}) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isLoading, setLoading] = useState(true)
-
   const toggleCategories = (i: number) => {
     setActiveIndex(i)
   }
 
   useEffect(() => {
+    
     if (products) {
       setLoading(false)
     } else {
@@ -42,10 +42,10 @@ function ProductSection({ products }: productsDocumentProps) {
           Array(8).fill(0).map((_, i) => (
             <LoadingProduct key={i} />
           ))
-          : products.map((product: productsDocumentProps, key: number) => (
+          : products?.map((product, key) => (
             <Product
               title={product.title}
-              catergory={product.catergory}
+              category={product.category}
               price={product.price}
               image={product.image}
               $id={product.$id}

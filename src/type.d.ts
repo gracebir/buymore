@@ -30,13 +30,17 @@ export type productsProp = {
 export interface productsDocumentProps extends Partial<Models.Document> {
     title: string
     price: number
-    catergory: string
+    category: string
     description?: string
     image: string
     $id?: string
 }
 
 export type productsDocumentProp = {
+    products: Array<productsDocumentProps>
+}
+
+export interface productTypes extends Partial<Models.Document[]>{
     products: Array<productsDocumentProps>
 }
 
@@ -51,4 +55,9 @@ export type inputType = {
     errorMsg?: string
     onChange?: (e:React.ChangeEvent<HTMLInputElement>) => void
     className?: string
+}
+
+export type initialStateType={
+    user?: Partial<Models.Session>
+    setUser?: Dispatch<SetStateAction<Models.Session | undefined>>
 }
