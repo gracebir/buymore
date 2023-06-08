@@ -1,34 +1,39 @@
 import Layout from '@/components/Layout'
-import { productProps } from '@/type'
 import Skeleton from 'react-loading-skeleton'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { BsCart3, BsArrowLeftShort } from 'react-icons/bs'
+import { databases } from '@/appwrite'
+import { productsDocumentProps } from '@/type'
 
 function ProductDetails() {
   const router = useRouter()
-  let id = router.query.id
+  let id = router.query.id!
   const [isLoading, setIsLoading] = useState(true)
-  const [product, setProduct] = useState<productProps>({
+  const [product, setProduct] = useState<productsDocumentProps>({
     title: '',
-    category: '',
+    price: 0,
     description: '',
     image: '',
-    price: 0
+    category: '',
   })
 
   // fetching a single product
   useEffect(() => {
     const fetchProduct = async () => {
       if (id) {
-        const response = await fetch(`https://fakestoreapi.com/products/${router.query.id}`)
-        const data: productProps = await response.json()
-        if (data) {
-          setProduct(data)
+        const response = databases.getDocument(
+          process.env.NEXT_PUBLIC_DATABASE as string,
+          process.env.NEXT_PUBLIC_PRODUCT_COLLECTION as string,
+          id as string
+        )
+        response.then((res) => {
+          console.log(res)
           setIsLoading(false)
-        }
+          setProduct(res as productsDocumentProps)
+        })
       }
     }
     fetchProduct()

@@ -17,6 +17,7 @@ function ForgetPassword() {
                     </div>
                     <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
                         <TextField
+                            id='email'
                             label='E-mail Address'
                             typeInput='email'
                             placeholder='Email Address' />

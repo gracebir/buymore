@@ -1,19 +1,19 @@
-import { productsProp } from '@/type'
 import React, { useEffect, useState } from 'react'
 import Product from './Product'
 import LoadingProduct from './LoadingProduct'
+import { Models } from 'appwrite'
 const categories = ["All", "Fashion", "Furniture", "Electronic", "Gaming"]
 
-function ProductSection({products}: productsProp) {
+function ProductSection({products}: {products: Models.Document[]}) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isLoading, setLoading] = useState(true)
-
   const toggleCategories = (i: number) => {
     setActiveIndex(i)
   }
 
-  useEffect(()=> {
-    if(products){
+  useEffect(() => {
+    
+    if (products) {
       setLoading(false)
     } else {
       setLoading(true)
@@ -27,10 +27,10 @@ function ProductSection({products}: productsProp) {
         <h1 className="text-xl font-bold text-center">Explore Popular Producs</h1>
         <div className='lg:flex flex-row gap-5 hidden'>
           {categories.map((item, i) => (
-            <button 
-            onClick={() => toggleCategories(i)} 
-            key={i} 
-            className={`border px-5 py-2 rounded-3xl hover:bg-dark-color hover:border-blue-color ${activeIndex === i ? 'border-blue-color bg-dark-color' : 'border-dark-color'}`}>
+            <button
+              onClick={() => toggleCategories(i)}
+              key={i}
+              className={`border px-5 py-2 rounded-3xl hover:bg-dark-color hover:border-blue-color ${activeIndex === i ? 'border-blue-color bg-dark-color' : 'border-dark-color'}`}>
               {item}
             </button>
           ))}
@@ -42,16 +42,16 @@ function ProductSection({products}: productsProp) {
           Array(8).fill(0).map((_, i) => (
             <LoadingProduct key={i} />
           ))
-          : products.map((product, _)=> (
-              <Product
-                title={product.title}
-                category={product.category}
-                price={product.price}
-                image={product.image}
-                id={product.id}
-                key={product.id}
-              />
-            )
+          : products?.map((product, key) => (
+            <Product
+              title={product.title}
+              category={product.category}
+              price={product.price}
+              image={product.image}
+              $id={product.$id}
+              key={product.$id}
+            />
+          )
           )}
       </div>
     </section>
