@@ -44,7 +44,11 @@ export type productsDocumentProp = {
 export type inputType = {
     label: string
     placeholder: string
+    value?: string | number
     typeInput: string
+    id: string
+    isError?: boolean
+    errorMsg?: string
     onChange?: (e:React.ChangeEvent<HTMLInputElement>) => void
     className?: string
 }
