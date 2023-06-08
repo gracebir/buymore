@@ -3,14 +3,29 @@ import TextField from './TextField'
 import Link from 'next/link'
 import ComboBoxInput from './ComboBoxInput'
 import { functUser } from '@/data'
+import { useFormik } from 'formik'
+import { signUpSchema } from '@/utils/validations'
 
 function SignupForm() {
     const [funct, setFunct] = useState("")
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-    }
+    
+    const { values, errors, handleChange, handleSubmit } = useFormik({
+        initialValues: {
+            name: '',
+            email: '',
+            phone: '',
+            password: '',
+            confirmPassword: '',
+            
+        },
+        onSubmit: () => {
+            console.log(values)
+        },
+        validationSchema: signUpSchema
+    })
+
     return (
-        <form onSubmit={handleSubmit} className='sm:col-span-1 lg:col-span-2 flex flex-col gap-9'>
+        <form autoComplete="off" onSubmit={handleSubmit} className='sm:col-span-1 lg:col-span-2 flex flex-col gap-9'>
             <div className='text-center flex flex-col gap-4'>
                 <h1 className='text-xl font-bold'>Create your Free Account</h1>
                 <span>Enter your information to continue</span>
@@ -18,23 +33,43 @@ function SignupForm() {
             <div className='grid lg:grid-cols-2 sm:grid-cols-1 gap-4'>
                 <TextField
                     label='Name'
+                    id='name'
                     typeInput='text'
+                    value={values.name}
+                    onChange={handleChange}
+                    errorMsg={errors.name}
                     placeholder='Enter Your Name' />
                 <TextField
                     label='E-mail Address'
                     typeInput='email'
+                    id='email'
+                    value={values.email}
+                    onChange={handleChange}
+                    errorMsg={errors.email}
                     placeholder='Email Address' />
                 <TextField
                     label='Password'
+                    id='password'
                     typeInput='password'
+                    value={values.password}
+                    onChange={handleChange}
+                    errorMsg={errors.password}
                     placeholder='Enter Your Password' />
                 <TextField
                     label='Confirm Password'
                     typeInput='password'
+                    id='confirmPassword'
+                    value={values.confirmPassword}
+                    onChange={handleChange}
+                    errorMsg={errors.confirmPassword}
                     placeholder='Confirm Your Password' />
                 <TextField
                     label='Phone Number'
                     typeInput='text'
+                    id='phone'
+                    value={values.phone}
+                    onChange={handleChange}
+                    errorMsg={errors.phone}
                     placeholder='+xxx xxx xxx xxx' />
                 <ComboBoxInput
                     data={functUser}
