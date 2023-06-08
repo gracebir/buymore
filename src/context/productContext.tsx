@@ -1,21 +1,25 @@
-import { createContext, useReducer } from 'react'
+import { initialStateType } from '@/type'
+import { Models } from 'appwrite'
+import { createContext, useReducer, useState } from 'react'
 
-const initialState = {
-    cart: {},
-    user: {}
+const initialState:initialStateType = {
+    user: {
+        $id:'',
+    },
 }
 
 type appProps = {
     children: React.ReactNode
   }
 
-const AppContext = createContext(initialState)
+export const AppContext = createContext(initialState)
 
 export const AppProivder = ({children}:appProps) => {
+    const [user, setUser] = useState<Models.Session>()
     return (
         <AppContext.Provider value={{
-            cart: {},
-            user: {}
+            user: user!,
+            setUser: setUser
         }}>
             {children}
         </AppContext.Provider>
