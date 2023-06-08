@@ -17,7 +17,7 @@ function ProductDetails() {
     price: 0,
     description: '',
     image: '',
-    catergory: '',
+    category: '',
   })
 
   // fetching a single product
@@ -55,7 +55,7 @@ function ProductDetails() {
             }
           </div>
           <div className="px-7 flex flex-col gap-4 lg:col-span-3 sm:col-span-8 lg:gap-8">
-            <p className="uppercase text-[.9rem] font-medium lg:font-semibold">{product.catergory || <Skeleton />}</p>
+            <p className="uppercase text-[.9rem] font-medium lg:font-semibold">{product.category || <Skeleton />}</p>
             <h1 className="text-[1.5rem] lg:text-2xl leading-8 lg:leading-[30px] font-bold">{product.title || <Skeleton />}</h1>
             <p className="text-gray-300 text-[1rem] lg:text-[1rem] leading-[25px] lg:leading-[30px]">
               {product.description || <Skeleton count={4} />}
