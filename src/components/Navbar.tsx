@@ -16,7 +16,7 @@ function Navbar() {
     const [isNavOpen, setNavIsOpen] = useState(false)
     const [text, setText] = useState("")
     const [isCartOpen, setIsCartOpen] = useState(false)
-    const { user, setUser, qty } = useContext(AppContext)
+    const { user, setUser, qty, subTotal } = useContext(AppContext)
     const logout = () => {
         const response = account.deleteSessions()
         response.then(
@@ -84,7 +84,7 @@ function Navbar() {
                             </div>
                             <div className="hidden lg:flex flex-col">
                                 <span className='text-gray-color text-sm'>My cart</span>
-                                <span>${0}</span>
+                                <span>${subTotal}</span>
                             </div>
                         </div>
                         <Link href={"/cart"} className="relative block lg:hidden">
