@@ -2,11 +2,13 @@ import { initialStateType, productProps } from '@/type'
 import { Models } from 'appwrite'
 import { createContext, useState } from 'react'
 
+const initialState: Partial<initialStateType>={}
+
 type appProps = {
     children: React.ReactNode
   }
 
-export const AppContext = createContext<initialStateType | null>(null)
+export const AppContext = createContext(initialState)
 
 export const AppProivder = ({children}:appProps) => {
     const [user, setUser] = useState<Models.Session>()
@@ -27,13 +29,21 @@ export const AppProivder = ({children}:appProps) => {
             setCart([...cart, item])
         }
     }
+
+    // quantity of products in the cart
+    let cartQuantities = cart.reduce((prev, current)=> prev + current.quantity, 0)
+
+    let subTotal = cart.reduce((prev, current)=> prev + current.price, 0)
+
     return (
         <AppContext.Provider value={{
-            user: user!,
+            user: user,
             setUser: setUser,
             cart: cart,
             setCart: setCart,
-            addBasket
+            addBasket,
+            qty: cartQuantities,
+            subTotal
         }}>
             {children}
         </AppContext.Provider>
