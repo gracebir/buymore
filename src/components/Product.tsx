@@ -8,7 +8,7 @@ import { BsCart3 } from 'react-icons/bs'
 function Product({$id, title, category, price, image }: productsDocumentProps) {
     const { addBasket } = useContext(AppContext)
     const add = () => {
-        addBasket({
+        addBasket?.({
             $id: $id,
             title: title,
             category: category,
