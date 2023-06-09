@@ -1,6 +1,6 @@
 import { initialStateType, productProps } from '@/type'
 import { Models } from 'appwrite'
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
 const initialState: Partial<initialStateType>={}
 
@@ -16,6 +16,7 @@ export const AppProivder = ({children}:appProps) => {
 
     // add to basket 
     const addBasket = (item: productProps) => {
+        localStorage.removeItem("carts")
         const index = cart.findIndex(elt=> elt.$id===item.$id)
         if(index!== -1){
             const updateProd = cart.map((elt, i)=> {
@@ -28,7 +29,16 @@ export const AppProivder = ({children}:appProps) => {
         } else {
             setCart([...cart, item])
         }
+        localStorage.setItem("carts", JSON.stringify([...cart]))
     }
+
+    // fetching cart data from localstorage
+    useEffect(()=> {
+        if(localStorage.getItem("carts")){
+            const items = JSON.parse(localStorage.getItem('carts')!)
+            setCart([...items])
+        }
+    }, [])
 
     // quantity of products in the cart
     let cartQuantities = cart.reduce((prev, current)=> prev + current.quantity, 0)
