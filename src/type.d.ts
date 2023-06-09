@@ -15,7 +15,7 @@ export type dropdownInputProps = {
 }
 
 export type productProps = {
-    id?: number
+    $id?: number
     title: string
     price: number
     category: string
@@ -60,4 +60,6 @@ export type inputType = {
 export type initialStateType={
     user?: Partial<Models.Session>
     setUser?: Dispatch<SetStateAction<Models.Session | undefined>>
+    cart?: Array<productProps>
+    setCart?: Dispatch<SetStateAction<productProps[]>>
 }
