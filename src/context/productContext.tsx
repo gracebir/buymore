@@ -1,6 +1,6 @@
-import { initialStateType } from '@/type'
+import { initialStateType, productProps } from '@/type'
 import { Models } from 'appwrite'
-import { createContext, useReducer, useState } from 'react'
+import { createContext, useState } from 'react'
 
 const initialState:initialStateType = {
     user: {
@@ -16,10 +16,13 @@ export const AppContext = createContext(initialState)
 
 export const AppProivder = ({children}:appProps) => {
     const [user, setUser] = useState<Models.Session>()
+    const [cart, setCart] = useState<productProps[]>([])
     return (
         <AppContext.Provider value={{
             user: user!,
-            setUser: setUser
+            setUser: setUser,
+            cart: cart,
+            setCart: setCart
         }}>
             {children}
         </AppContext.Provider>
