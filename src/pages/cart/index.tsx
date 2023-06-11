@@ -1,4 +1,5 @@
 import CartComponent from '@/components/Cart'
+import CartMobile from '@/components/CartMobile'
 import Layout from '@/components/Layout'
 import SummaryCard from '@/components/SummaryCard'
 import { AppContext } from '@/context/productContext'
@@ -20,26 +21,42 @@ function Cart() {
           </div>
           <div>
             {cart ? (
-              <div className="grid grid-cols-4 w-full gap-4">
-                <div className='hidden col-span-4 lg:grid grid-cols-4 border-b border-gray-600 pb-5'>
-                  {["Items","Quantity","SubTotal", "Remove"]
-                  .map((item)=> (
-                    <span className='col-span-1'>{item}</span>
+              <>
+                <div className="lg:grid grid-cols-4 w-full gap-4 hidden">
+                  <div className='hidden col-span-4 lg:grid grid-cols-4 border-b border-gray-600 pb-5'>
+                    {["Items", "Quantity", "SubTotal", "Remove"]
+                      .map((item) => (
+                        <span key={item} className='col-span-1'>{item}</span>
+                      ))}
+                  </div>
+                  <div className='col-span-4'>
+                    {cart.map((item, _) => (
+                      <CartComponent
+                        title={item.title}
+                        image={item.image}
+                        key={item.$id}
+                        quantity={item.quantity}
+                        price={item.price}
+                        category={item.category}
+                        $id={item.$id}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div className='lg:hidden grid grid-cols-1 gap-4'>
+                  {cart.map((item, _) => (
+                    <CartMobile
+                      title={item.title}
+                      key={item.$id}
+                      image={item.image}
+                      quantity={item.quantity}
+                      price={item.price}
+                      category={item.category}
+                      $id={item.$id}
+                    />
                   ))}
                 </div>
-                <div className='col-span-4'>
-                 {cart.map((item, _)=> (
-                   <CartComponent
-                   title={item.title}
-                   image={item.image}
-                   quantity={item.quantity}
-                   price={item.price}
-                   category={item.category}
-                   $id={item.$id}
-                   />
-                 ))}
-                </div>
-              </div>
+              </>
             ) : (
               <div className='flex flex-col gap-3 items-center'>
                 <RiShoppingBag3Line className='text-gray-400' size={70} />
