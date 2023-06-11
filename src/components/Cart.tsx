@@ -7,7 +7,7 @@ import {BiMinus} from 'react-icons/bi'
 
 function CartComponent({$id, title, price, image, quantity}:productProps) {
   return (
-    <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 border-b border-gray-600 py-4'>
+    <div className='grid grid-cols-4 border-b border-gray-600 py-4'>
       <div className='flex flex-row gap-4 col-span-1'>
         <div className='lg:w-20 w-16 h-14 border border-dark-color rounded-md lg:h-24'>
           <Image className="w-full h-full object-cover" alt={title} src={image} width={200} height={300}/>
