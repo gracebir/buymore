@@ -1,11 +1,15 @@
 import { productProps } from '@/type'
-import React from 'react'
+import React, { useContext } from 'react'
 import { IoCloseOutline } from 'react-icons/io5'
 import { HiPlusSm } from 'react-icons/hi'
 import { BiMinus } from 'react-icons/bi'
 import Image from 'next/image'
+import { AppContext } from '@/context/productContext'
 
-function CartMobile({ $id, title, price, image, quantity }: productProps) {
+function CartMobile({ $id, title, price, image, quantity, description, category }: productProps) {
+    const { addBasket, decreaseQuantity } = useContext(AppContext)
+    const incrementQuantity = () => addBasket?.({ $id, title, price, quantity, image, description, category })
+    const decrementQuantity = () => decreaseQuantity?.($id!)
     return (
         <div className='flex justify-between py-4 border-b border-gray-500'>
             <div className='flex gap-2'>
@@ -16,9 +20,9 @@ function CartMobile({ $id, title, price, image, quantity }: productProps) {
             </div>
             <div className='flex flex-col gap-3'>
                 <div className='flex'>
-                    <span className='border border-gray-400 px-2 py-1 text-blue-color cursor-pointer'><BiMinus size={20} /></span>
+                    <span onClick={decrementQuantity} className='border border-gray-400 px-2 py-1 text-blue-color cursor-pointer'><BiMinus size={20} /></span>
                     <span className='border border-gray-400 px-3 py-1 text-blue-color font-bold'>{quantity}</span>
-                    <span className='border border-gray-400 px-2 py-1 text-blue-color cursor-pointer'><HiPlusSm size={20} /></span>
+                    <span onClick={incrementQuantity} className='border border-gray-400 px-2 py-1 text-blue-color cursor-pointer'><HiPlusSm size={20} /></span>
                 </div>
                 <div className='flex items-center justify-between'>
                     <span className=''>${price}</span>

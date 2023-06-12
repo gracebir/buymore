@@ -1,11 +1,15 @@
 import { productProps } from '@/type'
 import Image from 'next/image'
-import React from 'react'
+import React, {useContext} from 'react'
 import { IoCloseOutline } from 'react-icons/io5'
 import { HiPlusSm } from 'react-icons/hi'
 import {BiMinus} from 'react-icons/bi'
+import { AppContext } from '@/context/productContext'
 
-function CartComponent({$id, title, price, image, quantity}:productProps) {
+function CartComponent({$id, title, price, image, quantity, category, description}:productProps) {
+  const { addBasket, decreaseQuantity } = useContext(AppContext)
+  const incrementQuantity = () => addBasket?.({$id, title, price, quantity, image, description, category})
+  const decrementQuantity = () => decreaseQuantity?.($id!)
   return (
     <div className='grid grid-cols-4 border-b border-gray-600 py-4'>
       <div className='flex flex-row gap-4 col-span-1'>
@@ -17,9 +21,9 @@ function CartComponent({$id, title, price, image, quantity}:productProps) {
       <div className='col-span-3 grid lg:grid-cols-3 sm:grid-cols-2 sm:gap-4'>
         <div className="col-span-1 px-2">
           <div className='flex'>
-            <span className='border border-gray-400 px-2 py-1 text-blue-color cursor-pointer'><BiMinus size={20}/></span>
+            <span onClick={decrementQuantity} className='border border-gray-400 px-2 py-1 text-blue-color cursor-pointer'><BiMinus size={20}/></span>
             <span className='border border-gray-400 px-3 py-1 text-blue-color font-bold'>{quantity}</span>
-            <span className='border border-gray-400 px-2 py-1 text-blue-color cursor-pointer'><HiPlusSm size={20}/></span>
+            <span onClick={incrementQuantity} className='border border-gray-400 px-2 py-1 text-blue-color cursor-pointer'><HiPlusSm size={20}/></span>
           </div> 
         </div>
         <span className='col-span-1'>${price}</span>
