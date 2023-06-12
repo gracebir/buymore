@@ -67,4 +67,6 @@ export type initialStateType={
     qty: number
     subTotal: number
     addBasket: (product: productProps) => void
+    decreaseQuantity: (id:string) => void
+    removeItem: (id:string) => void
 }

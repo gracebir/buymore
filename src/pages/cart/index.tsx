@@ -33,6 +33,7 @@ function Cart() {
                     {cart.map((item, _) => (
                       <CartComponent
                         title={item.title}
+                        description={item.description}
                         image={item.image}
                         key={item.$id}
                         quantity={item.quantity}
@@ -49,6 +50,7 @@ function Cart() {
                       title={item.title}
                       key={item.$id}
                       image={item.image}
+                      description={item.description}
                       quantity={item.quantity}
                       price={item.price}
                       category={item.category}
