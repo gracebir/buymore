@@ -50,11 +50,11 @@ export const AppProivder = ({children}:appProps) => {
         localStorage.setItem("carts", JSON.stringify([...cart]))
     }
 
-    const removeItem = (id: string) => {
+    const removeToBasket = (id: string) => {
         localStorage.removeItem("carts")
         const remainItems = cart.filter((item)=> item.$id !== id)
         setCart([...remainItems])
-        localStorage.setItem("carts", JSON.stringify([...cart]))
+        localStorage.setItem("carts", JSON.stringify([...remainItems]))
     }
 
     // fetching cart data from localstorage
@@ -68,7 +68,7 @@ export const AppProivder = ({children}:appProps) => {
     // quantity of products in the cart
     let cartQuantities = cart.reduce((prev, current)=> prev + current.quantity, 0)
 
-    let subTotal = cart.reduce((prev, current)=> prev + (current.price * current.quantity), 0)
+    let subTotal = parseInt(cart.reduce((prev, current)=> prev + (current.price * current.quantity), 0).toFixed(2))
 
     return (
         <AppContext.Provider value={{
@@ -79,7 +79,8 @@ export const AppProivder = ({children}:appProps) => {
             addBasket,
             qty: cartQuantities,
             subTotal,
-            decreaseQuantity
+            decreaseQuantity,
+            removeToBasket
         }}>
             {children}
         </AppContext.Provider>
