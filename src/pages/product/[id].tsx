@@ -18,6 +18,7 @@ function ProductDetails() {
     description: '',
     image: '',
     category: '',
+    quantity: 0
   })
 
   // fetching a single product
