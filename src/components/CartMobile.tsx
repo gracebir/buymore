@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { AppContext } from '@/context/productContext'
 
 function CartMobile({ $id, title, price, image, quantity, description, category }: productProps) {
-    const { addBasket, decreaseQuantity } = useContext(AppContext)
+    const { addBasket, decreaseQuantity, removeToBasket } = useContext(AppContext)
     const incrementQuantity = () => addBasket?.({ $id, title, price, quantity, image, description, category })
     const decrementQuantity = () => decreaseQuantity?.($id!)
     return (
@@ -21,12 +21,12 @@ function CartMobile({ $id, title, price, image, quantity, description, category 
             <div className='flex flex-col gap-3'>
                 <div className='flex'>
                     <span onClick={decrementQuantity} className='border border-gray-400 px-2 py-1 text-blue-color cursor-pointer'><BiMinus size={20} /></span>
-                    <span className='border border-gray-400 px-3 py-1 text-blue-color font-bold'>{quantity}</span>
+                    <span className='border-b border-t border-gray-400 px-3 py-1 text-blue-color font-bold'>{quantity}</span>
                     <span onClick={incrementQuantity} className='border border-gray-400 px-2 py-1 text-blue-color cursor-pointer'><HiPlusSm size={20} /></span>
                 </div>
                 <div className='flex items-center justify-between'>
                     <span className=''>${price}</span>
-                    <button className='w-8 h-8 bg-red-300 bg-opacity-50 rounded-full flex items-center justify-center'>
+                    <button onClick={()=> removeToBasket?.($id!)} className='w-8 h-8 bg-red-300 bg-opacity-50 rounded-full flex items-center justify-center'>
                         <IoCloseOutline className='text-white' size={20} />
                     </button>
                 </div>

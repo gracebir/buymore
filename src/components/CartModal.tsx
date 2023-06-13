@@ -7,7 +7,7 @@ import { AppContext } from '@/context/productContext'
 import Image from 'next/image'
 
 function CartModal({ setIsCartOpen }: { setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>> }) {
-    const { subTotal, cart } = useContext(AppContext)
+    const { subTotal, cart, removeToBasket } = useContext(AppContext)
     return (
         <div onClick={() => setIsCartOpen(false)} className="fixed hidden bottom-0 lg:flex justify-end w-full h-screen inset-0 top-0 right-0 left-0 backdrop-blur-sm z-50">
             <div onClick={(e) => e.stopPropagation()} className='w-[30%] flex flex-col justify-between bg-dark-color h-full py-4'>
@@ -32,7 +32,7 @@ function CartModal({ setIsCartOpen }: { setIsCartOpen: React.Dispatch<React.SetS
                                             </span>
                                             <span className='text-sm'>x {pro.quantity}</span>
                                         </div>
-                                        <button className='px-2 py-2 rounded-full bg-red-400'>
+                                        <button onClick={()=> removeToBasket?.(pro.$id!)} className='px-2 py-2 rounded-full bg-red-400'>
                                             <IoCloseOutline/>
                                         </button>
                                     </div>

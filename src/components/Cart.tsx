@@ -7,7 +7,7 @@ import {BiMinus} from 'react-icons/bi'
 import { AppContext } from '@/context/productContext'
 
 function CartComponent({$id, title, price, image, quantity, category, description}:productProps) {
-  const { addBasket, decreaseQuantity } = useContext(AppContext)
+  const { addBasket, decreaseQuantity, removeToBasket } = useContext(AppContext)
   const incrementQuantity = () => addBasket?.({$id, title, price, quantity, image, description, category})
   const decrementQuantity = () => decreaseQuantity?.($id!)
   return (
@@ -22,13 +22,13 @@ function CartComponent({$id, title, price, image, quantity, category, descriptio
         <div className="col-span-1 px-2">
           <div className='flex'>
             <span onClick={decrementQuantity} className='border border-gray-400 px-2 py-1 text-blue-color cursor-pointer'><BiMinus size={20}/></span>
-            <span className='border border-gray-400 px-3 py-1 text-blue-color font-bold'>{quantity}</span>
+            <span className='border-b border-t border-gray-400 px-3 py-1 text-blue-color font-bold'>{quantity}</span>
             <span onClick={incrementQuantity} className='border border-gray-400 px-2 py-1 text-blue-color cursor-pointer'><HiPlusSm size={20}/></span>
           </div> 
         </div>
         <span className='col-span-1'>${price}</span>
         <span className='col-span-1 flex justify-center lg:items-end md:items-start pl-5'>
-          <button className='w-8 h-8 bg-red-300 bg-opacity-50 rounded-full flex items-center justify-center'>
+          <button onClick={()=> removeToBasket?.($id!)} className='w-8 h-8 bg-red-300 bg-opacity-50 rounded-full flex items-center justify-center'>
           <IoCloseOutline className='text-white' size={20}/>
           </button>
         </span>
