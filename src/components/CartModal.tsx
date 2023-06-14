@@ -17,7 +17,7 @@ function CartModal({ setIsCartOpen }: { setIsCartOpen: React.Dispatch<React.SetS
                 </div>
                 {cart ? (
                     <div className='flex-1 px-5 flex flex-col'>
-                        {cart.map((pro, i) => (
+                        {cart.map((pro, _) => (
                             <div key={pro.$id} className='flex flex-row gap-4 py-4 border-b border-gray-500'>
                                 <div className='w-[70px] h-[90px] rounded-md border border-dark-color'>
                                     <Image className='w-full h-full object-contain rounded-md' src={pro.image} alt='' width={60} height={50} />
