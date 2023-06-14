@@ -16,8 +16,7 @@ function Navbar() {
     const [isNavOpen, setNavIsOpen] = useState(false)
     const [text, setText] = useState("")
     const [isCartOpen, setIsCartOpen] = useState(false)
-    const { user, setUser } = useContext(AppContext)
-
+    const { user, setUser, qty, subTotal } = useContext(AppContext)
     const logout = () => {
         const response = account.deleteSessions()
         response.then(
@@ -80,16 +79,16 @@ function Navbar() {
                         )}
                         <div onClick={() => setIsCartOpen(!isCartOpen)} className="hidden lg:flex items-center gap-3 cursor-pointer">
                             <div className="relative">
-                                <span className="absolute top-0 right-0 text-[12px] text-center rounded-full bg-red-900 h-[1.10rem] w-[1.20rem]">{0}</span>
+                                <span className="absolute top-0 right-0 text-[12px] text-center rounded-full bg-red-900 h-[1.10rem] w-[1.20rem]">{qty}</span>
                                 <BsCart3 size={35} className="text-blue-color" />
                             </div>
                             <div className="hidden lg:flex flex-col">
                                 <span className='text-gray-color text-sm'>My cart</span>
-                                <span>${0}</span>
+                                <span>${subTotal}</span>
                             </div>
                         </div>
                         <Link href={"/cart"} className="relative block lg:hidden">
-                            <span className="absolute top-0 right-0 text-[10px] text-center rounded-full bg-red-900 h-[1rem] w-[1rem]">{0}</span>
+                            <span className="absolute top-0 right-0 text-[10px] text-center rounded-full bg-red-900 h-[1rem] w-[1rem]">{qty}</span>
                             <BsCart3 size={30} className="text-blue-color" />
                         </Link>
                     </div>

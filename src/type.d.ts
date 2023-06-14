@@ -15,12 +15,13 @@ export type dropdownInputProps = {
 }
 
 export type productProps = {
-    id?: number
+    $id?: string
     title: string
     price: number
     category: string
     description?: string
     image: string
+    quantity: number
 }
 
 export type productsProp = {
@@ -31,6 +32,7 @@ export interface productsDocumentProps extends Partial<Models.Document> {
     title: string
     price: number
     category: string
+    quantity: number
     description?: string
     image: string
     $id?: string
@@ -60,4 +62,11 @@ export type inputType = {
 export type initialStateType={
     user?: Partial<Models.Session>
     setUser?: Dispatch<SetStateAction<Models.Session | undefined>>
+    cart: Array<productProps>
+    setCart: Dispatch<SetStateAction<productProps[]>>
+    qty: number
+    subTotal: number
+    addBasket: (product: productProps) => void
+    decreaseQuantity: (id:string) => void
+    removeToBasket: (id:string) => void
 }

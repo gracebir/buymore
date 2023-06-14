@@ -44,6 +44,7 @@ function ProductSection({products}: {products: Models.Document[]}) {
           ))
           : products?.map((product, key) => (
             <Product
+              quantity={product.quantity}
               title={product.title}
               category={product.category}
               price={product.price}
