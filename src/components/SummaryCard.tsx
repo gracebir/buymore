@@ -1,7 +1,13 @@
 import { AppContext } from '@/context/productContext'
+// import { loadStripe } from '@stripe/stripe-js'
 import React, { useContext } from 'react'
 
+// const stripePromise = loadStripe(process.env.public_key!)
+
 function SummaryCard() {
+  const createChekout = async () => {
+    // const stripe = await stripePromise
+  }
   const { subTotal} = useContext(AppContext)
   return (
     <div className="w-full lg:w-[350px] border rounded-md border-gray-700 flex flex-col gap-4 pb-3">
@@ -21,7 +27,7 @@ function SummaryCard() {
           <h3 className='font-bold'>Total</h3>
           <span className='font-bold'>${subTotal}</span>
         </div>
-        <button className='bg-blue-color py-2 rounded-md'>Checkout</button>
+        <button onClick={createChekout} role='link' className='bg-blue-color py-2 rounded-md'>Checkout</button>
       </div>
     </div>
   )
