@@ -9,6 +9,7 @@ import { RiShoppingBag3Line } from 'react-icons/ri'
 
 function Cart() {
   const { cart } = useContext(AppContext)
+  console.log(cart?.length)
   return (
     <Layout>
       <div className="lg:py-8 py-6 flex justify-between gap-4 lg:gap-7 flex-col items-start lg:flex-row">
@@ -20,7 +21,7 @@ function Cart() {
             </button>
           </div>
           <div>
-            {cart ? (
+            {cart?.length! > 0 ? (
               <>
                 <div className="lg:grid grid-cols-4 w-full gap-4 hidden">
                   <div className='hidden col-span-4 lg:grid grid-cols-4 border-b border-gray-600 pb-5'>
@@ -30,7 +31,7 @@ function Cart() {
                       ))}
                   </div>
                   <div className='col-span-4'>
-                    {cart.map((item, _) => (
+                    {cart?.map((item, _) => (
                       <CartComponent
                         title={item.title}
                         description={item.description}
@@ -45,7 +46,7 @@ function Cart() {
                   </div>
                 </div>
                 <div className='lg:hidden grid grid-cols-1 gap-4'>
-                  {cart.map((item, _) => (
+                  {cart?.map((item, _) => (
                     <CartMobile
                       title={item.title}
                       key={item.$id}
