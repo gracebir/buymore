@@ -15,9 +15,9 @@ function CartModal({ setIsCartOpen }: { setIsCartOpen: React.Dispatch<React.SetS
                     <h3 className='font-semibold'>Shopping Cart</h3>
                     <IoCloseOutline onClick={() => setIsCartOpen(false)} className='cursor-pointer' size={20} />
                 </div>
-                {cart ? (
+                {cart?.length! > 0 ? (
                     <div className='flex-1 px-5 flex flex-col'>
-                        {cart.map((pro, i) => (
+                        {cart?.map((pro, _) => (
                             <div key={pro.$id} className='flex flex-row gap-4 py-4 border-b border-gray-500'>
                                 <div className='w-[70px] h-[90px] rounded-md border border-dark-color'>
                                     <Image className='w-full h-full object-contain rounded-md' src={pro.image} alt='' width={60} height={50} />
