@@ -26,7 +26,7 @@ function CartComponent({$id, title, price, image, quantity, category, descriptio
             <span onClick={incrementQuantity} className='border border-gray-400 px-2 py-1 text-blue-color cursor-pointer'><HiPlusSm size={20}/></span>
           </div> 
         </div>
-        <span className='col-span-1'>${price}</span>
+        <span className='col-span-1'>${(quantity * price)}</span>
         <span className='col-span-1 flex justify-center lg:items-end md:items-start pl-5'>
           <button onClick={()=> removeToBasket?.($id!)} className='w-8 h-8 bg-red-300 bg-opacity-50 rounded-full flex items-center justify-center'>
           <IoCloseOutline className='text-white' size={20}/>
